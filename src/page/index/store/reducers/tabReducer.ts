@@ -1,4 +1,4 @@
-import { GET_TAB_ITEM } from "../actions/action-types/tab";
+import { GET_TAB_ITEM, CHANGE_TAB_ITEM } from "../actions/action-types/tab";
 import config from "../../config";
 import { IState, ITabs } from "../types";
 
@@ -27,6 +27,9 @@ function tabReducer(state: ITabs = initState, action: any) {
   switch (action.type) {
     case GET_TAB_ITEM:
       newState = { ...state };
+      break;
+    case CHANGE_TAB_ITEM:
+      newState = { ...state, activeKey: action.payload };
       break;
   }
   return newState;
