@@ -48,17 +48,20 @@ function loadTemp(entries, defaultName = "index.html") {
 let entries = loadEntry("index.tsx");
 let templatePlugins = loadTemp(entries, "index.html");
 
-// console.log(entries);
-
 let config = {
   mode: "development",
   entry: entries,
   output: {
     filename: "[name].min.js",
-    path: path.resolve(__dirname, "./dist")
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/"
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, "./dist"),
+    port: 8080
   },
   module: {
     rules: [
