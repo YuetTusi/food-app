@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const pageDir = path.resolve(__dirname, "./src/page"); //page目录的绝对路径
 
 /**
@@ -79,7 +80,19 @@ let config = {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: [
+                path.resolve(__dirname, "./src/component/common.scss")
+              ]
+            }
+          }
+        ],
         include: path.resolve(__dirname, "./src")
       },
       {
@@ -90,7 +103,15 @@ let config = {
       }
     ]
   },
-  plugins: [].concat(templatePlugins)
+  plugins: [
+    //拷静态文件到打包目录
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, "./src/static"),
+        to: path.resolve(__dirname, "./dist")
+      }
+    ])
+  ].concat(templatePlugins)
 };
 
 module.exports = config;
