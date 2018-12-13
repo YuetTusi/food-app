@@ -2,3 +2,12 @@
   $rate: 37.5px;
   @return ($px / $rate) + rem;
 }
+
+// 清除浮动
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}

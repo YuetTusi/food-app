@@ -1,0 +1,23 @@
+.category {
+  position: relative;
+  font-size: px2rem(12px);
+  .category-item {
+    box-sizing: border-box;
+    float: left;
+    width: 25%;
+    padding: px2rem(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .category-img {
+    margin: 0;
+    padding: 0;
+    width: px2rem(47px);
+    height: px2rem(47px);
+  }
+  .category-text {
+    margin-top: px2rem(5px);
+    text-align: center;
+  }
+}

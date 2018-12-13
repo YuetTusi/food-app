@@ -16,14 +16,19 @@ class Category extends React.Component<IProps> {
     this.props.queryCategoryData();
   }
   renderCategory(): any {
-    return this.props.items.map(
+    return this.props.items.slice(0, 8).map(
       (item: any): any => {
-        return <div key={generateKey()}>{item.name}</div>;
+        return (
+          <div className="category-item" key={generateKey()}>
+            <img className="category-img" src={item.url} alt={item.name} />
+            <div className="category-text">{item.name}</div>
+          </div>
+        );
       }
     );
   }
   render(): any {
-    return <div className="category">{this.renderCategory()}</div>;
+    return <div className="category clearfix">{this.renderCategory()}</div>;
   }
 }
 export default connect(
