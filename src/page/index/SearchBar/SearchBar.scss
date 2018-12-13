@@ -1,0 +1,66 @@
+.search-bar {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: px2rem(50px);
+  left: 0px;
+  top: 0px;
+  font-size: px2rem(14px);
+  //   background-color: pink;
+
+  .location {
+    display: flex;
+    height: px2rem(30px);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: px2rem(25px);
+  }
+  .location-icon {
+    display: inline-block;
+    width: px2rem(17.5px);
+    height: px2rem(17.5px);
+    background-image: url(./images/location-icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  span {
+    display: inline-block;
+    margin: 0px px2rem(5px);
+    color: #fff;
+  }
+  .arrow-icon {
+    display: inline-block;
+    width: px2rem(16px);
+    height: px2rem(16px);
+    background-image: url(./images/arrow-icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .location {
+    line-height: px2rem(50px);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .search {
+    display: flex;
+    width: 40%;
+    height: px2rem(30px);
+    border-radius: px2rem(15px);
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    .search-icon {
+      display: inline-block;
+      width: px2rem(16px);
+      height: px2rem(16px);
+      margin: 0px px2rem(10px);
+      background-image: url(./images/search-icon.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+}

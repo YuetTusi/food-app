@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const pageDir = path.resolve(__dirname, "./src/page"); //page目录的绝对路径
@@ -62,7 +63,8 @@ let config = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
-    port: 8080
+    port: 8080,
+    hot: true //启用热加载
   },
   module: {
     rules: [
@@ -104,6 +106,8 @@ let config = {
     ]
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     //拷静态文件到打包目录
     new CopyWebpackPlugin([
       {
