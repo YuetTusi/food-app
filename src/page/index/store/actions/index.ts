@@ -1,5 +1,6 @@
 import { GET_TAB_ITEM, CHANGE_TAB_ITEM } from "./action-types/tab";
 
+//标签页Action
 let actions = {
   /**
    * @description 获取标签页数据（首页、订单、我的）
