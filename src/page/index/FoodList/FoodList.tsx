@@ -26,7 +26,7 @@ class FoodList extends React.Component<IProps> {
     return (
       <div className="food-list">
         <h4>- 附近商家 -</h4>
-        <div>{this.renderFoodList()};</div>
+        <div>{this.renderFoodList()}</div>
       </div>
     );
   }

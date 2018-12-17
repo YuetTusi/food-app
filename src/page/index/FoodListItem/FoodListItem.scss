@@ -26,7 +26,10 @@
       top: 0;
       left: 0;
       z-index: 1;
-      background-color: rgb(239, 152, 40);
+      background-color: #ffa627;
+      &.new {
+        background-color: #2ec56c;
+      }
     }
   }
   //右侧内容区
@@ -44,10 +47,56 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding: px2rem(4px) 0;
+      ul {
+        margin: px2rem(4px) 0 0 0;
+        padding: 0;
+        li {
+          margin: 0;
+          padding: px2rem(2px) 0;
+          list-style-type: none;
+          display: flex;
+          align-items: center;
+          img {
+            width: px2rem(14px);
+            height: px2rem(14px);
+          }
+          span {
+            display: inline-block;
+            padding-left: px2rem(4px);
+            color: rgb(126, 126, 126);
+          }
+        }
+      }
+    }
+    .tag {
+      background-color: rgb(243, 202, 79);
+      color: #222;
+      font-size: px2rem(12px);
+      padding: px2rem(2px);
+      border-radius: px2rem(4px);
     }
     .score {
       display: inline-block;
       color: rgb(126, 126, 126);
+      .star {
+        i {
+          display: inline-block;
+          width: px2rem(14px);
+          height: px2rem(14px);
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .full-star {
+          background-image: url(./images/fullstar.png);
+        }
+        .half-star {
+          background-image: url(./images/halfstar.png);
+        }
+        .gray-star {
+          background-image: url(./images/graystar.png);
+        }
+      }
     }
     .sale-and-time {
       display: inline-block;
