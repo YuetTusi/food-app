@@ -2,7 +2,7 @@
  * @description 外卖列表
  */
 interface IFoodList {
-  foodList: Array<any>;
+  foodData: any;
 }
 
 /**

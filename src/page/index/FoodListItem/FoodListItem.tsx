@@ -48,7 +48,6 @@ class FoodListItem extends React.Component<IProps> {
       for (let k = 0; k < grayStar; k++) {
         stars.push(<i className="gray-star" key={generateKey()} />);
       }
-      console.log(score, fullStar, halfStar, grayStar);
     } else {
       for (let i = 0; i < 5; i++) {
         stars.push(<i className="gray-star" key={generateKey()} />);

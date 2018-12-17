@@ -4,36 +4,70 @@ import { connect } from "react-redux";
 import { IState, IFoodList } from "../store/types";
 import foodListAction from "../store/actions/food-list";
 import FoodListItem from "../FoodListItem/FoodListItem";
+import Loading from "../../../component/Loading/Loading";
 import { generateKey } from "../../../common/tools";
+import { dropdownLoad } from "../../../common/dropdownload";
 
 interface IProps extends IFoodList {
   queryFoodListData: any;
+}
+interface IStates {
+  isNoData: boolean; //无数据提示
 }
 
 /**
  * @description 外卖列表组件
  */
-class FoodList extends React.Component<IProps> {
+class FoodList extends React.Component<IProps, IStates> {
+  constructor(props: any) {
+    super(props);
+    this.handleScrollLoad = this.handleScrollLoad.bind(this);
+  }
+  state = {
+    isNoData: false
+  };
   componentDidMount(): void {
-    this.props.queryFoodListData();
+    this.props.queryFoodListData(this.props.foodData.page_index);
+    window.addEventListener("scroll", this.handleScrollLoad);
+  }
+  componentWillUnmount(): void {
+    window.addEventListener("scroll", this.handleScrollLoad);
+  }
+  //滚动加载
+  handleScrollLoad(e: any) {
+    dropdownLoad(e, () => {
+      if (this.props.foodData.poi_has_next_page) {
+        this.props.queryFoodListData(this.props.foodData.page_index + 1);
+        this.setState({ isNoData: false });
+      } else {
+        this.setState({ isNoData: true });
+      }
+    });
   }
   renderFoodList(): any {
-    return this.props.foodList.map(item => {
-      return <FoodListItem {...item} key={generateKey()} />;
-    });
+    if (this.props.foodData.poilist) {
+      return this.props.foodData.poilist.map((item: any) => {
+        return <FoodListItem {...item} key={generateKey()} />;
+      });
+    } else {
+      return null;
+    }
   }
   render(): any {
     return (
-      <div className="food-list">
-        <h4>- 附近商家 -</h4>
-        <div>{this.renderFoodList()}</div>
-      </div>
+      <React.Fragment>
+        <div className="food-list">
+          <h4>- 附近商家 -</h4>
+          <div>{this.renderFoodList()}</div>
+          <Loading isNoData={this.state.isNoData} />
+        </div>
+      </React.Fragment>
     );
   }
 }
 export default connect(
   (state: IState) => ({
-    foodList: state.foodListReducer.foodList
+    foodData: state.foodListReducer.foodData
   }),
   foodListAction
 )(FoodList);
