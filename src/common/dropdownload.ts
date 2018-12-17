@@ -1,4 +1,5 @@
-const RATE: number = 2100;
+import { throttle } from "./tools";
+const DELAY: number = 100;
 
 /**
  * @description 下拉加载
@@ -7,20 +8,12 @@ const RATE: number = 2100;
  */
 function dropdownLoad(event: any, callback: any): void {
   let { clientHeight, scrollHeight, scrollTop } = document.documentElement;
-  let blank: number = 20; //提前量
-  let timer: any = null;
-
-  //节流处理
-  if (timer) {
-    clearTimeout(timer);
-  } else {
-    setTimeout(() => {
-      if (scrollTop + clientHeight >= scrollHeight - blank) {
-        if (typeof callback === "function") {
-          callback.call(event);
-        }
-      }
-    }, RATE);
+  // let blank: number = 30; //提前量
+  // console.log(scrollTop + clientHeight - (scrollHeight - blank));
+  if (scrollTop + clientHeight >= scrollHeight) {
+    if (typeof callback === "function") {
+      callback.call(event);
+    }
   }
 }
 
