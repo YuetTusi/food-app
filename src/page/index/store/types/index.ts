@@ -1,4 +1,11 @@
 /**
+ * @description 外卖列表
+ */
+interface IFoodList {
+  foodList: Array<any>;
+}
+
+/**
  * @description 外卖分类State
  */
 interface ICategory {
@@ -19,7 +26,8 @@ interface ITabs {
 interface IState {
   tabReducer: ITabs;
   categoryReducer: ICategory;
+  foodListReducer: IFoodList;
 }
 
-export { IState, ITabs, ICategory };
+export { IState, ITabs, ICategory, IFoodList };
 export default IState;

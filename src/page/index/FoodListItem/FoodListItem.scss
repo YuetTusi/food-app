@@ -1,0 +1,65 @@
+.food-list-item {
+  display: flex;
+  font-size: px2rem(12px);
+  flex-direction: row;
+  padding: px2rem(10px);
+
+  // 1象素边线
+  &:after {
+    background-color: #ececec;
+  }
+  // 左侧图片区
+  .food-img {
+    position: relative;
+    img {
+      width: px2rem(86px);
+      height: px2rem(65px);
+    }
+    .brand {
+      position: absolute;
+      width: auto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: px2rem(12px);
+      height: px2rem(14px);
+      color: #fff;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: rgb(239, 152, 40);
+    }
+  }
+  //右侧内容区
+  .food-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: px2rem(4px);
+    .title {
+      font-size: px2rem(16px);
+      font-weight: bold;
+    }
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .score {
+      display: inline-block;
+      color: rgb(126, 126, 126);
+    }
+    .sale-and-time {
+      display: inline-block;
+      color: rgb(126, 126, 126);
+    }
+    .split {
+      display: inline-block;
+      padding: 0px px2rem(2px);
+      color: rgb(126, 126, 126);
+    }
+    .price-tip {
+      color: rgb(126, 126, 126);
+    }
+  }
+}
