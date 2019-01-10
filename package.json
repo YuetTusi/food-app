@@ -10,6 +10,7 @@
   "author": "yuet",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^10.12.18",
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.11",

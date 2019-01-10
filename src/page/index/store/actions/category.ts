@@ -1,6 +1,5 @@
 import { QUERY_CATEGORY_DATA } from "./action-types/category";
 import axios from "axios";
-import path from "path";
 
 //外卖分类Action
 let actions = {
