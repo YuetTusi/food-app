@@ -18,7 +18,7 @@ let initState: ITabs = {
     }
   ],
   //当前激活的标签
-  activeKey: config.TABKEY.home
+  activeKey: config.TABKEY.order
 };
 
 function tabReducer(state: ITabs = initState, action: any) {

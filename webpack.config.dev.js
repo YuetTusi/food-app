@@ -27,8 +27,9 @@ function loadEntry(defaultName = "index.tsx") {
 }
 
 /**
- * 根据多入口对象返回模块插件数组
- * @param {Object} entries 多入口对象
+ * @description 根据多入口对象返回模块插件数组
+ * @param {Obejct} entries 入口对象
+ * @param {String} defaultName 模版页文件名
  */
 function loadTemp(entries, defaultName = "index.html") {
   let htmlPlugins = [];

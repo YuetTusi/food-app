@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import categoryAction from "../store/actions/category";
 import { IState, ICategory } from "../store/types";
 import "./Category.scss";
-import { any } from "prop-types";
 import { generateKey } from "../../../common/tools";
 
 interface IProps extends ICategory {
