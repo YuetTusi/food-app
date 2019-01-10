@@ -2,6 +2,8 @@
  * @description 订单列表
  */
 interface IOrder {
+  pageIndex: any;
+  hasNextPage: any;
   orderList: Array<any>;
 }
 

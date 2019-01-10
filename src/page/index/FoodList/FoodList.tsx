@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { IState, IFoodList } from "../store/types";
 import foodListAction from "../store/actions/food-list";
 import FoodListItem from "../FoodListItem/FoodListItem";
-import Loading from "../../../component/Loading/Loading";
+// import Loading from "../../../component/Loading/Loading";
 import { generateKey } from "../../../common/tools";
 import { dropdownLoad } from "../../../common/dropdownload";
+import ScrollView from "../../../component/ScrollView/ScrollView";
 
 interface IProps extends IFoodList {
   queryFoodListData: any;
@@ -28,21 +29,19 @@ class FoodList extends React.Component<IProps, IStates> {
   };
   componentDidMount(): void {
     this.props.queryFoodListData(this.props.foodData.page_index);
-    window.addEventListener("scroll", this.handleScrollLoad);
+    // window.addEventListener("scroll", this.handleScrollLoad);
   }
   componentWillUnmount(): void {
-    window.addEventListener("scroll", this.handleScrollLoad);
+    // window.removeEventListener("scroll", this.handleScrollLoad);
   }
   //滚动加载
   handleScrollLoad(e: any) {
-    dropdownLoad(e, () => {
-      if (this.props.foodData.poi_has_next_page) {
-        this.props.queryFoodListData(this.props.foodData.page_index + 1);
-        this.setState({ isNoData: false });
-      } else {
-        this.setState({ isNoData: true });
-      }
-    });
+    if (this.props.foodData.poi_has_next_page) {
+      this.props.queryFoodListData(this.props.foodData.page_index + 1);
+      this.setState({ isNoData: false });
+    } else {
+      this.setState({ isNoData: true });
+    }
   }
   renderFoodList(): any {
     if (this.props.foodData.poilist) {
@@ -58,8 +57,13 @@ class FoodList extends React.Component<IProps, IStates> {
       <React.Fragment>
         <div className="food-list">
           <h4>- 附近商家 -</h4>
-          <div>{this.renderFoodList()}</div>
-          <Loading isNoData={this.state.isNoData} />
+          <ScrollView
+            loadCallback={this.handleScrollLoad}
+            isNoData={this.state.isNoData}
+          >
+            {this.renderFoodList()}
+          </ScrollView>
+          {/* <Loading isNoData={this.state.isNoData} /> */}
         </div>
       </React.Fragment>
     );
