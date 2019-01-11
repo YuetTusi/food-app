@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import actions from "../store/actions";
 import Home from "../Home/Home";
 import Order from "../Order/Order";
+import Profile from "../Profile/Profile";
 import BottomBar from "../BottomBar/BottomBar";
 import "./Main.scss";
 
@@ -11,7 +12,8 @@ class Main extends React.Component<any> {
     return (
       <div>
         {/* <Home /> */}
-        <Order />
+        {/* <Order /> */}
+        <Profile />
         <BottomBar />
       </div>
     );
