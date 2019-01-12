@@ -22,9 +22,9 @@ class BottomBar extends React.Component<IProps> {
     super(props);
   }
   tabClick = (e: any) => {
-    let key = e.target.dataset.tab;
+    // let key = e.target.dataset.tab;
     // console.log(this.props);
-    this.props.changeTabItem(key);
+    // this.props.changeTabItem(key);
   };
   renderTabItem(): any {
     let tabs = this.props.tabs;
@@ -35,14 +35,12 @@ class BottomBar extends React.Component<IProps> {
         this.props.activeKey === key ? " active" : ""
       }`;
       return (
-        <div className={itemCls} key={generateKey()} onClick={this.tabClick}>
-          <NavLink to={`/${key}`} replace={true}>
+          <NavLink to={`/${key}`} replace={true} className={itemCls} key={generateKey()} onClick={this.tabClick}>
             <i className={activeCls} data-tab={key} />
             <div className="btn-name" data-tab={key}>
               {name}
             </div>
           </NavLink>
-        </div>
       );
     });
   }
@@ -50,6 +48,8 @@ class BottomBar extends React.Component<IProps> {
     return <div className="bottom-bar">{this.renderTabItem()}</div>;
   }
 }
+
+// export default withRouter(BottomBar as any);
 
 export default withRouter(connect(
   (state: IState) => {

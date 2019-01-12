@@ -10,13 +10,12 @@
   justify-content: space-around;
   align-items: center;
   .btn-item {
-    a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
     .btn-name {
       font-size: px2rem(11px);
     }
@@ -27,22 +26,35 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-    &.home i {
-      background-image: url(./images/homeIcon.png);
+    &.home {
+      i {
+        background-image: url(./images/homeIcon.png);
+      }
       &.active {
-        background-image: url(./images/homeIconActive.png);
+        i {
+          background-image: url(./images/homeIconActive.png);
+        }
       }
     }
-    &.order i {
-      background-image: url(./images/orderIcon.png);
+
+    &.order {
+      i {
+        background-image: url(./images/orderIcon.png);
+      }
       &.active {
-        background-image: url(./images/orderIconActive.png);
+        i {
+          background-image: url(./images/orderIconActive.png);
+        }
       }
     }
-    &.my i {
-      background-image: url(./images/myIcon.png);
+    &.my {
+      i {
+        background-image: url(./images/myIcon.png);
+      }
       &.active {
-        background-image: url(./images/myIconActive.png);
+        i {
+          background-image: url(./images/myIconActive.png);
+        }
       }
     }
   }
