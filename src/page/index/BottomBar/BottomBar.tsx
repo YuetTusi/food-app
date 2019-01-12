@@ -1,5 +1,6 @@
 import "./BottomBar.scss";
 import * as React from "react";
+import { NavLink } from "react-router-dom";
 import actions from "../store/actions";
 import { IState, ITabs } from "../store/types";
 import { connect } from "react-redux";
@@ -34,10 +35,12 @@ class BottomBar extends React.Component<IProps> {
       }`;
       return (
         <div className={itemCls} key={generateKey()} onClick={this.tabClick}>
-          <i className={activeCls} data-tab={key} />
-          <div className="btn-name" data-tab={key}>
-            {name}
-          </div>
+          <NavLink to={`/${key}`}>
+            <i className={activeCls} data-tab={key} />
+            <div className="btn-name" data-tab={key}>
+              {name}
+            </div>
+          </NavLink>
         </div>
       );
     });
