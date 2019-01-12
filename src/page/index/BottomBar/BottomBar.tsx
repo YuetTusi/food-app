@@ -1,11 +1,11 @@
 import "./BottomBar.scss";
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import actions from "../store/actions";
 import { IState, ITabs } from "../store/types";
 import { connect } from "react-redux";
 import { generateKey } from "../../../common/tools";
-
+// declare function withRouter(Component: any): any;
 /**
  * @description 组件属性规范
  */
@@ -23,6 +23,7 @@ class BottomBar extends React.Component<IProps> {
   }
   tabClick = (e: any) => {
     let key = e.target.dataset.tab;
+    // console.log(this.props);
     this.props.changeTabItem(key);
   };
   renderTabItem(): any {
@@ -35,7 +36,7 @@ class BottomBar extends React.Component<IProps> {
       }`;
       return (
         <div className={itemCls} key={generateKey()} onClick={this.tabClick}>
-          <NavLink to={`/${key}`}>
+          <NavLink to={`/${key}`} replace={true}>
             <i className={activeCls} data-tab={key} />
             <div className="btn-name" data-tab={key}>
               {name}
@@ -49,7 +50,8 @@ class BottomBar extends React.Component<IProps> {
     return <div className="bottom-bar">{this.renderTabItem()}</div>;
   }
 }
-export default connect(
+
+export default withRouter(connect(
   (state: IState) => {
     return {
       tabs: state.tabReducer.tabs,
@@ -57,4 +59,4 @@ export default connect(
     };
   },
   actions
-)(BottomBar);
+)(BottomBar) as any);

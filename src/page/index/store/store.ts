@@ -7,6 +7,7 @@ declare let module: any;
 declare function require(p: any): any;
 
 const history = createHashHistory(); //创建history对象
+history.push("/home");
 const reactRouterMiddleware = routerMiddleware(history); //创建react-router中间件
 
 let store = createStore(
