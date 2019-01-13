@@ -1,0 +1,22 @@
+.navheader {
+  font-size: px2rem(16px);
+  height: px2rem(48px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .back-icon {
+    position: relative;
+    left: px2rem(10px);
+    width: px2rem(24px);
+    height: px2rem(24px);
+    display: block;
+    background-image: url("./images/back.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .title {
+    text-align: center;
+    align-self: flex-end;
+  }
+}
