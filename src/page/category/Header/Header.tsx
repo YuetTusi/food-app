@@ -8,16 +8,21 @@ import "./Header.scss";
 interface IProps extends IHeader {
   //切换分类
   changeActiveCategory: any;
+  //查询分类数据
+  queryCategoryFilter: any;
 }
 
 class Header extends React.Component<IProps> {
+  componentWillMount() {
+    this.fetchCategoryData();
+  }
   //切换分类
   categoryButtonClick = (type: string): void => {
     this.props.changeActiveCategory(type);
   };
   //查询分类数据
-  fetchCategoryData(type: string): any {
-    console.log(type);
+  fetchCategoryData(): any {
+    this.props.queryCategoryFilter();
   }
   renderCategoryButtonList = (): any => {
     let { buttonList } = this.props;
@@ -37,7 +42,6 @@ class Header extends React.Component<IProps> {
     });
   };
   render(): any {
-    this.renderCategoryButtonList();
     return (
       <div className="category-button">{this.renderCategoryButtonList()}</div>
     );
@@ -47,7 +51,10 @@ export default connect(
   (state: IState) => {
     return {
       buttonList: state.headerReducer.buttonList,
-      active: state.headerReducer.active
+      active: state.headerReducer.active,
+      categoryFilterList: state.headerReducer.categoryFilterList,
+      sortTypeList: state.headerReducer.sortTypeList,
+      activityFilterList: state.headerReducer.activityFilterList
     };
   },
   actions

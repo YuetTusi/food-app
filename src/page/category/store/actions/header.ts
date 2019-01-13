@@ -12,12 +12,12 @@ let actions = {
     return async function(dispatch: any) {
       let action: any = { type: QUERY_CATEGORY_FILTER };
       try {
-        let res: any = await axios.get("http://localhost:3000/api/filter");
-        if (res.code === 0) {
+        let { data } = await axios.get("http://localhost:3000/api/filter");
+        if (data.code === 0) {
           action.payload = {
-            category_filter_list: res.data.category_filter_list,
-            sort_type_list: res.data.sort_type_list,
-            activity_filter_list: res.data.activity_filter_list
+            category_filter_list: data.data.category_filter_list || [],
+            sort_type_list: data.data.sort_type_list || [],
+            activity_filter_list: data.data.activity_filter_list || []
           };
         } else {
           action.payload = null;

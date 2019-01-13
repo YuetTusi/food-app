@@ -1,5 +1,8 @@
 import { IHeader } from "../types";
-import { CHANGE_ACTIVE_CATEGORY } from "../actions/action-types/header";
+import {
+  CHANGE_ACTIVE_CATEGORY,
+  QUERY_CATEGORY_FILTER
+} from "../actions/action-types/header";
 import config from "../../config";
 
 let buttonList: Array<any> = [
@@ -21,7 +24,13 @@ let initState: IHeader = {
   //条件栏
   buttonList,
   //当前激活分类，当状态为激活，分类菜单是打开状态
-  active: config.CATEGORY_KEY.categories
+  active: config.CATEGORY_KEY.categories,
+  //分类
+  categoryFilterList: [],
+  //排序
+  sortTypeList: [],
+  //筛选
+  activityFilterList: []
 };
 
 function headerReducer(state: IHeader = initState, action: any): IHeader {
@@ -32,6 +41,14 @@ function headerReducer(state: IHeader = initState, action: any): IHeader {
       newState = {
         ...state,
         active: action.payload
+      };
+      break;
+    case QUERY_CATEGORY_FILTER:
+      newState = {
+        ...state,
+        categoryFilterList: [...action.payload.category_filter_list],
+        sortTypeList: [...action.payload.sort_type_list],
+        activityFilterList: [...action.payload.activity_filter_list]
       };
       break;
   }

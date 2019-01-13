@@ -13,6 +13,11 @@
     &:last-child {
       border-right: none;
     }
+    &.categories {
+      &.active:after {
+        transform: rotate(-225deg);
+      }
+    }
     &.categories:after {
       content: "";
       width: px2rem(8px);
@@ -22,6 +27,11 @@
       border-right: px2rem(1px) solid #969696;
       border-top: px2rem(1px) solid #969696;
       transform: rotate(-45deg);
+    }
+    &.sort {
+      &.active:after {
+        transform: rotate(-225deg);
+      }
     }
     &.sort:after {
       content: "";
