@@ -19,7 +19,11 @@ class Header extends React.Component<IProps> {
   }
   //切换分类
   categoryButtonClick = (type: string): void => {
-    this.props.changeActiveCategory(type);
+    if (this.props.active === type) {
+      this.props.changeActiveCategory("");
+    } else {
+      this.props.changeActiveCategory(type);
+    }
   };
   //查询分类数据
   fetchCategoryData(): any {

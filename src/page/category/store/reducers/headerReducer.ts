@@ -24,7 +24,7 @@ let initState: IHeader = {
   //条件栏
   buttonList,
   //当前激活分类，当状态为激活，分类菜单是打开状态
-  active: config.CATEGORY_KEY.categories,
+  active: '', //config.CATEGORY_KEY.categories,
   //分类
   categoryFilterList: [],
   //排序
