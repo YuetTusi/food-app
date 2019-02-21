@@ -11,11 +11,37 @@ interface IProps extends IHeader {
   changeActiveCategory: any;
   //查询分类数据
   queryCategoryFilter: any;
+  //更新过滤条件
+  changeFilter: any;
 }
 
 class Header extends React.Component<IProps> {
   componentWillMount() {
     this.fetchCategoryData();
+  }
+  /**
+   * @description 重置激活状态（将当前菜单下的所有标签置为未激活）
+   * @param list 数据
+   */
+  resetActive(list: Array<any>): Array<any> {
+    return list.map((i: any) => {
+      i.active = false;
+    });
+  }
+  /**
+   * 过滤条件点击事件
+   * @param filterData 点击的分类
+   * @param list 总数据
+   */
+  doFilter(filterData: any, list: Array<any>) {
+    let { name } = filterData; //点击的过滤条件名
+
+    this.resetActive(list);
+    filterData.active = true; //设置激活（标签为黄色）
+    //此处为一个技巧，远程数据中本没有active，但是我们手动增加这个属性
+    //让值更新到仓库里，这就能达到设置激活的目的
+
+    this.props.changeFilter(name);
   }
   //切换分类
   categoryButtonClick = (type: string): void => {
@@ -29,12 +55,19 @@ class Header extends React.Component<IProps> {
   fetchCategoryData(): any {
     this.props.queryCategoryFilter();
   }
+  //综合排序的内层类目
   renderInnerFilter(subData: Array<any>): any {
     if (subData && subData.length > 0) {
       let li = subData.map(item => {
         let cls = item.active ? "inner-li active" : "inner-li";
         return (
-          <li key={generateKey()} className={cls}>
+          <li
+            key={generateKey()}
+            className={cls}
+            onClick={() => {
+              this.doFilter(item, subData);
+            }}
+          >
             {item.icon ? <img src={item.icon} /> : ""}
             <span>{item.name}</span>
           </li>
@@ -51,7 +84,13 @@ class Header extends React.Component<IProps> {
       let li = subData.map(item => {
         let cls = item.active ? "inner-li active" : "inner-li";
         return (
-          <li key={generateKey()} className={cls}>
+          <li
+            key={generateKey()}
+            className={cls}
+            onClick={() => {
+              this.doFilter(item, subData);
+            }}
+          >
             {item.icon ? <img src={item.icon} /> : ""}
             <span>
               {item.name} ({item.quantity})
@@ -83,7 +122,13 @@ class Header extends React.Component<IProps> {
     let li = data.map(item => {
       let cls = item.active ? "sort-li active" : "sort-li";
       return (
-        <li className={cls} key={generateKey()}>
+        <li
+          className={cls}
+          key={generateKey()}
+          onClick={() => {
+            this.doFilter(item, data);
+          }}
+        >
           {item.name}
         </li>
       );

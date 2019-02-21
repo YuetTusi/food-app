@@ -1,7 +1,8 @@
 import axios from "axios";
 import {
   QUERY_CATEGORY_FILTER,
-  CHANGE_ACTIVE_CATEGORY
+  CHANGE_ACTIVE_CATEGORY,
+  CHANGE_FILTER
 } from "./action-types/header";
 
 let actions = {
@@ -34,6 +35,13 @@ let actions = {
    */
   changeActiveCategory(payload: any): any {
     return { type: CHANGE_ACTIVE_CATEGORY, payload };
+  },
+  /**
+   * @description 切换过滤条件
+   * @param payload  用户点击的条件名称
+   */
+  changeFilter(payload: any): any {
+    return { type: CHANGE_FILTER, payload };
   }
 };
 
