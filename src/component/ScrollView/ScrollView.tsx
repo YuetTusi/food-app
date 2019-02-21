@@ -1,6 +1,7 @@
 import * as React from "react";
 import Loading from "../Loading/Loading";
 import { dropdownLoad } from "../../common/dropdownload";
+import { throttle } from "../../common/tools";
 
 interface IProps {
   loadCallback: any; //加载数据的回调（由调用者传入）
@@ -12,12 +13,14 @@ interface IProps {
  */
 class ScrollView extends React.Component<IProps> {
   componentDidMount(): void {
+    //节流
+    let loadHandle = throttle(this.props.loadCallback, 500);
     //滚动时触发
     window.addEventListener("scroll", e => {
       //dropdownLoad每上拉到底就会执行回调
       //如果传入的isNoData为true，说明数据全部加载
       dropdownLoad(e, () => {
-        this.props.loadCallback();
+        loadHandle();
       });
     });
   }

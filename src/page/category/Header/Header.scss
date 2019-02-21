@@ -1,11 +1,19 @@
 .category-button {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 10;
   font-size: px2rem(12px);
+  background-color: #fff;
   border-top: 1px solid #e2e2e2;
   border-bottom: 1px solid #e2e2e2;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding: px2rem(10px);
+  margin-top: px2rem(48px);
   .button {
     border-right: 1px solid #e2e2e2;
     flex: 1;
@@ -57,15 +65,19 @@
 }
 .panel-root {
   position: relative;
+  margin-top: px2rem(82px);
+
   .panel {
     display: none;
-    position: absolute;
+    position: fixed;
+    z-index: 9;
     width: 100%;
     height: px2rem(350px);
-    top: 0;
+    top: px2rem(84px);
     left: 0;
     bottom: 0;
     right: 0;
+    border-bottom: px2rem(1px) solid #e2e2e2;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #fff;

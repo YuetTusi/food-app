@@ -14,9 +14,17 @@ interface IHeader {
   activityFilterList: Array<any>;
 }
 
-interface IState {
-  headerReducer: any;
+/**
+ * @description 外卖列表
+ */
+interface IFoodList {
+  foodData: any;
 }
 
-export { IHeader, IState };
+interface IState {
+  headerReducer: any;
+  foodListReducer: IFoodList;
+}
+
+export { IHeader, IFoodList, IState };
 export default IState;
