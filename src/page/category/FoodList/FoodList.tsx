@@ -29,16 +29,15 @@ class FoodList extends React.Component<IProps, IStates> {
   };
   componentDidMount(): void {
     this.props.queryFoodListData(this.props.foodData.page_index);
-    // window.addEventListener("scroll", this.handleScrollLoad);
   }
   componentWillUnmount(): void {
     // window.removeEventListener("scroll", this.handleScrollLoad);
   }
   //滚动加载
   handleScrollLoad(e: any) {
-    console.log('handleScrollLoad');
+    
     if (this.props.foodData.poi_has_next_page) {
-      this.props.queryFoodListData(this.props.foodData.page_index + 1);
+      this.props.queryFoodListData(this.props.pageIndex + 1);
       this.setState({ isNoData: false });
     } else {
       this.setState({ isNoData: true });
@@ -63,7 +62,6 @@ class FoodList extends React.Component<IProps, IStates> {
           >
             {this.renderFoodList()}
           </ScrollView>
-          {/* <Loading isNoData={this.state.isNoData} /> */}
         </div>
       </React.Fragment>
     );
@@ -71,7 +69,9 @@ class FoodList extends React.Component<IProps, IStates> {
 }
 export default connect(
   (state: IState) => ({
-    foodData: state.foodListReducer.foodData
+    foodData: state.foodListReducer.foodData,
+    filterData: state.foodListReducer.filterData,
+    pageIndex: state.foodListReducer.pageIndex
   }),
   foodListAction
 )(FoodList);

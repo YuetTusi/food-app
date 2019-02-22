@@ -38,7 +38,7 @@ let actions = {
   },
   /**
    * @description 切换过滤条件
-   * @param payload  用户点击的条件名称
+   * @param payload  用户点击的条件对象
    */
   changeFilter(payload: any): any {
     return { type: CHANGE_FILTER, payload };

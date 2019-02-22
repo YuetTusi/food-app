@@ -1,5 +1,6 @@
 import * as React from "react";
-import actions from "../store/actions/header";
+import headerActions from "../store/actions/header";
+import foodListActions from "../store/actions/food-list";
 import { connect } from "react-redux";
 import { IState, IHeader } from "../store/types";
 import { generateKey } from "../../../common/tools";
@@ -13,6 +14,8 @@ interface IProps extends IHeader {
   queryCategoryFilter: any;
   //更新过滤条件
   changeFilter: any;
+  //查询外卖列表
+  queryFoodListData: any;
 }
 
 class Header extends React.Component<IProps> {
@@ -34,14 +37,13 @@ class Header extends React.Component<IProps> {
    * @param list 总数据
    */
   doFilter(filterData: any, list: Array<any>) {
-    let { name } = filterData; //点击的过滤条件名
-
     this.resetActive(list);
     filterData.active = true; //设置激活（标签为黄色）
     //此处为一个技巧，远程数据中本没有active，但是我们手动增加这个属性
     //让值更新到仓库里，这就能达到设置激活的目的
 
-    this.props.changeFilter(name);
+    this.props.changeFilter(filterData);
+    this.props.queryFoodListData(0);
   }
   //切换分类
   categoryButtonClick = (type: string): void => {
@@ -213,8 +215,10 @@ export default connect(
       //综合排序
       sortTypeList: state.headerReducer.sortTypeList,
       //筛选
-      activityFilterList: state.headerReducer.activityFilterList
+      activityFilterList: state.headerReducer.activityFilterList,
+      //过滤条件
+      filterData: state.headerReducer.filterData
     };
   },
-  actions
+  { ...headerActions, queryFoodListData: foodListActions.queryFoodListData }
 )(Header);

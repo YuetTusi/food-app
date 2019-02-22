@@ -31,7 +31,9 @@ let initState: IHeader = {
   //排序菜单
   sortTypeList: [],
   //筛选菜单
-  activityFilterList: []
+  activityFilterList: [],
+  //过滤条件，首次为空
+  filterData: null
 };
 
 function headerReducer(state: IHeader = initState, action: any): IHeader {
@@ -58,11 +60,14 @@ function headerReducer(state: IHeader = initState, action: any): IHeader {
         let temp = newButtonList.find((i: any) => {
           return i.key === state.active;
         });
-        temp.text = action.payload;
+        temp.text = action.payload.name;
         newState = {
           ...state,
           buttonList: newButtonList,
-          active: ""
+          active: "",
+          filterData: {
+            ...action.payload
+          }
         };
       }
       // newState={
