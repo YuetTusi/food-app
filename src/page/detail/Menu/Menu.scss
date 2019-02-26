@@ -1,0 +1,41 @@
+.detail-menu {
+  display: flex;
+  flex-direction: row;
+  .menu-left-panel {
+    flex: 1;
+    position: absolute;
+    top: px2rem(90px);
+    left: 0px;
+    bottom: 0px;
+    overflow: auto;
+    .menu-left-scroll {
+      font-size: px2rem(14px);
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          list-style-type: none;
+          text-align: center;
+          margin: 0;
+          padding: px2rem(10px);
+          background-color: rgb(235, 235, 235);
+          border-bottom: 1px solid rgb(169, 169, 169);
+          &:last-child {
+            border-bottom: none;
+          }
+          img {
+            width: px2rem(16px);
+            height: px2rem(16px);
+          }
+        }
+      }
+    }
+  }
+  .menu-right-panel {
+    flex: 3;
+  }
+}
