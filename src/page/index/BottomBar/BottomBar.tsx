@@ -38,7 +38,7 @@ class BottomBar extends React.Component<IProps> {
           <NavLink to={`/${key}`} replace={true} className={itemCls} key={generateKey()} onClick={this.tabClick}>
             <i className={activeCls} data-tab={key} />
             <div className="btn-name" data-tab={key}>
-              {name}
+              {name}222
             </div>
           </NavLink>
       );

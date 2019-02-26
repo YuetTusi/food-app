@@ -1,0 +1,23 @@
+.tab-bar {
+  font-size: px2rem(14px);
+  .content-panel {
+    border-top: px2rem(1px) solid #e0e0e0;
+    border-bottom: px2rem(1px) solid #e0e0e0;
+    margin-top: px2rem(48px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      color: #636363;
+      height: px2rem(40px);
+      line-height: px2rem(40px);
+      text-decoration: none;
+      &.active {
+        border-bottom: px2rem(3px) solid #f9d235;
+      }
+    }
+  }
+}
