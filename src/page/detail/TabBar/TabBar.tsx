@@ -21,6 +21,7 @@ class TabBar extends React.Component<IProps> {
       return (
         <NavLink
           to={"/" + item.key}
+          replace={true}
           key={generateKey()}
           activeClassName="active"
         >

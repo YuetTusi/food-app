@@ -5,12 +5,15 @@
     border-bottom: px2rem(1px) solid #e0e0e0;
     margin-top: px2rem(48px);
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     a {
-      display: inline-block;
+      flex: 1;
+      display: block;
+      box-sizing: border-box;
       text-align: center;
-      width: 100%;
+      width: auto;
       color: #636363;
       height: px2rem(40px);
       line-height: px2rem(40px);
