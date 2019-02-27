@@ -10,6 +10,10 @@ interface IProps extends IMenu {
   queryFoodList: any;
   //切换当前显示的菜品
   changeCurrentFood: any;
+  //增加菜品数量
+  addFoodCount: any;
+  //减少菜品数量
+  minusFoodCount: any;
 }
 
 class Menu extends React.Component<IProps> {
@@ -27,6 +31,59 @@ class Menu extends React.Component<IProps> {
     this.props.changeCurrentFood(index);
   }
   /**
+   * @description 添加菜品数量
+   * @param id 菜品id
+   */
+  addFoodClick(id: string): any {
+    this.props.addFoodCount(id);
+  }
+  /**
+   * @description 删除菜品数量
+   * @param id 菜品id
+   */
+  minusFoodClick(id: string): any {
+    this.props.minusFoodCount(id);
+  }
+  /**
+   * 渲染添加&删除购物车按钮
+   * @param item 菜品数据对象
+   */
+  renderCartButton(item: any): any {
+    let buttonJsx: any = null;
+    // console.log(item.id);
+    if (item.chooseCount) {
+      buttonJsx = (
+        <React.Fragment>
+          <i
+            className="minus"
+            onClick={(e: any) => {
+              this.minusFoodClick(item.id);
+            }}
+          />
+          <span>{item.chooseCount}</span>
+          <i
+            className="add"
+            onClick={(e: any) => {
+              this.addFoodClick(item.id);
+            }}
+          />
+        </React.Fragment>
+      );
+    } else {
+      buttonJsx = (
+        <React.Fragment>
+          <i
+            className="add"
+            onClick={(e: any) => {
+              this.addFoodClick(item.id);
+            }}
+          />
+        </React.Fragment>
+      );
+    }
+    return buttonJsx;
+  }
+  /**
    * @description 渲染某个菜品下的明细列表
    */
   renderCurrentFoodList(): any {
@@ -40,7 +97,7 @@ class Menu extends React.Component<IProps> {
     if (spus) {
       return spus.map((item: any) => {
         return (
-          <div className="item-food">
+          <div className="item-food" key={generateKey()}>
             <div>
               <img src={item.picture} />
             </div>
@@ -53,11 +110,7 @@ class Menu extends React.Component<IProps> {
                 <span>/份</span>
               </span>
             </div>
-            <div className="cart-buttons">
-              <i className="minus" />
-              <span>1</span>
-              <i className="add" />
-            </div>
+            <div className="cart-buttons">{this.renderCartButton(item)}</div>
           </div>
         );
       });

@@ -1,4 +1,9 @@
-import { QUERY_FOOD_LIST, CHANGE_CURRENT_FOOD } from "./action-types/menu";
+import {
+  QUERY_FOOD_LIST,
+  CHANGE_CURRENT_FOOD,
+  ADD_FOOD_COUNT,
+  MINUS_FOOD_COUNT
+} from "./action-types/menu";
 import axious from "axios";
 
 const action = {
@@ -16,7 +21,6 @@ const action = {
         } = await axious.get(url);
         dispatch({ type: QUERY_FOOD_LIST, payload: food_spu_tags });
       } catch (error) {
-        console.log(error);
         dispatch({ type: QUERY_FOOD_LIST, payload: null });
       }
     };
@@ -27,6 +31,20 @@ const action = {
    */
   changeCurrentFood(index: number) {
     return { type: CHANGE_CURRENT_FOOD, payload: index };
+  },
+  /**
+   * @description 增加菜品数量
+   * @param id 菜品id
+   */
+  addFoodCount(id: string) {
+    return { type: ADD_FOOD_COUNT, payload: id };
+  },
+  /**
+   * @description 减少菜品数量
+   * @param id 菜品id
+   */
+  minusFoodCount(id: string) {
+    return { type: MINUS_FOOD_COUNT, payload: id };
   }
 };
 
