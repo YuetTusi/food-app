@@ -1,4 +1,4 @@
-import { QUERY_FOOD_LIST } from "./action-types/menu";
+import { QUERY_FOOD_LIST, CHANGE_CURRENT_FOOD } from "./action-types/menu";
 import axious from "axios";
 
 const action = {
@@ -20,6 +20,13 @@ const action = {
         dispatch({ type: QUERY_FOOD_LIST, payload: null });
       }
     };
+  },
+  /**
+   * @description 切换当前显示的菜品
+   * @param index 菜品索引
+   */
+  changeCurrentFood(index: number) {
+    return { type: CHANGE_CURRENT_FOOD, payload: index };
   }
 };
 

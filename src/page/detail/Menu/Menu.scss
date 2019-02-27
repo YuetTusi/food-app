@@ -1,18 +1,28 @@
+// 整个撑满页面，为了实现滚动条
 .detail-menu {
-  display: flex;
-  flex-direction: row;
+  position: absolute;
+  top: px2rem(90px);
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   .menu-left-panel {
-    flex: 1;
     position: absolute;
-    top: px2rem(90px);
+    width: px2rem(80px);
+    top: 0px;
     left: 0px;
     bottom: 0px;
-    overflow: auto;
     .menu-left-scroll {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      overflow: auto;
       font-size: px2rem(14px);
       ul {
         margin: 0;
-        padding: 0;
+        padding: 0 0 px2rem(60px) 0;
+        background-color: rgb(235, 235, 235);
         li {
           display: flex;
           flex-direction: row;
@@ -27,6 +37,9 @@
           &:last-child {
             border-bottom: none;
           }
+          &.active {
+            background-color: #efefef;
+          }
           img {
             width: px2rem(16px);
             height: px2rem(16px);
@@ -36,6 +49,92 @@
     }
   }
   .menu-right-panel {
-    flex: 3;
+    position: absolute;
+    width: auto;
+    top: 0px;
+    left: px2rem(85px);
+    bottom: 0px;
+    right: 0px;
+    .menu-right-scroll {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      overflow: auto;
+      font-size: px2rem(14px);
+      .item-food {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        border-bottom: px2rem(1px) solid #efefef;
+        margin: px2rem(10px) 0px;
+        img {
+          width: px2rem(72px);
+          height: px2rem(72px);
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          span {
+            padding: px2rem(2px);
+          }
+          .name {
+            color: #222;
+            font-size: px2rem(16px);
+          }
+          .desc {
+            display: inline-block;
+            font-size: px2rem(10px);
+            color: silver;
+            // white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+          }
+          .good {
+            font-size: px2rem(10px);
+            color: silver;
+          }
+          .price {
+            color: silver;
+            em {
+              font-style: normal;
+              color: red;
+            }
+          }
+        }
+        //添加到购物加按钮区域
+        .cart-buttons {
+          position: absolute;
+          z-index: 5;
+          bottom: px2rem(5px);
+          right: px2rem(5px);
+          i {
+            display: inline-block;
+            width: px2rem(22px);
+            height: px2rem(22px);
+            background-size: cover;
+          }
+          span {
+            display: inline-block;
+            height: px2rem(22px);
+            line-height: px2rem(22px);
+            color: #222;
+            font-size: px2rem(12px);
+            vertical-align: bottom;
+            text-align: center;
+            padding-left: px2rem(4px);
+            padding-right: px2rem(4px);
+          }
+          .add {
+            background-image: url(./images/plus.png);
+          }
+          .minus {
+            background-image: url(./images/minus.png);
+          }
+        }
+      }
+    }
   }
 }

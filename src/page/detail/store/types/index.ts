@@ -3,6 +3,7 @@
  */
 interface IMenu {
   foodList: Array<any>;
+  currentFoodIndex: number;
 }
 
 /**
