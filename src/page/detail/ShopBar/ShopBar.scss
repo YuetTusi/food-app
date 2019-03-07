@@ -5,6 +5,71 @@
   bottom: 0;
   z-index: 10;
   margin: 0;
+  .cart-list {
+    //购物车列表
+    font-size: px2rem(14px);
+    background-color: #fff;
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      background-color: rgb(241, 241, 241);
+      padding: px2rem(12px);
+      i {
+        display: block;
+        margin-right: px2rem(2px);
+        width: px2rem(16px);
+        width: px2rem(16px);
+        background-image: url(./images/clear.jpeg);
+        background-size: cover;
+      }
+    }
+    .cart-ul {
+      margin-bottom: px2rem(5px);
+      padding: 0;
+      li {
+        list-style-type: none;
+        margin: 0;
+        padding: px2rem(10px) px2rem(5px);
+        border-bottom: 1px solid #f1f1f1;
+        font-size: px2rem(16px);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &:last-child{
+            border-bottom: 0;
+        }
+        .name{
+            width:50%;
+            overflow:hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .buttons {
+          .add {
+            display: inline-block;
+            width: px2rem(18px);
+            height: px2rem(18px);
+            background-image: url(./images/plus.png);
+            background-size: cover;
+          }
+          span{
+            display: inline-block;
+            padding-left: px2rem(5px);
+            padding-right: px2rem(5px);
+            vertical-align: top;
+          }
+          .remove {
+            display: inline-block;
+            width: px2rem(18px);
+            height: px2rem(18px);
+            background-image: url(./images/minus.png);
+            background-size: cover;
+          }
+        }
+      }
+    }
+  }
   .bottom-bar {
     background-color: rgba(51, 51, 51, 0.9);
     height: px2rem(50px);
