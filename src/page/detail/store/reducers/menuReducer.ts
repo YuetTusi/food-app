@@ -2,7 +2,8 @@ import {
   QUERY_FOOD_LIST,
   CHANGE_CURRENT_FOOD,
   ADD_FOOD_COUNT,
-  MINUS_FOOD_COUNT
+  MINUS_FOOD_COUNT,
+  RESET_FOOD_COUNT
 } from "../actions/action-types/menu";
 import { IMenu } from "../types";
 
@@ -26,6 +27,9 @@ function menuReducer(state: IMenu = initState, action: any): IMenu {
       break;
     case MINUS_FOOD_COUNT:
       newState = minusFoodCount(state, action);
+      break;
+    case RESET_FOOD_COUNT:
+      newState = resetFoodCount(state, action);
       break;
   }
 
@@ -59,6 +63,20 @@ function minusFoodCount(state: IMenu, action: any): IMenu {
         if (item.chooseCount > 0) {
           item.chooseCount--;
         }
+      }
+      return item;
+    });
+    newState.foodList[state.currentFoodIndex].spus = [...list];
+  }
+  return newState;
+}
+function resetFoodCount(state: IMenu, action: any): IMenu {
+  let newState: IMenu = { ...state };
+  let list = state.foodList[state.currentFoodIndex];
+  if (list.spus && list.spus.length > 0) {
+    list = list.spus.map((item: any) => {
+      if (item.chooseCount) {
+        item.chooseCount = 0; //将所有的chooseCount清零
       }
       return item;
     });

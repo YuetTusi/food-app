@@ -1,4 +1,5 @@
 import * as React from "react";
+import Score from "../Score/Score";
 import "./Evo.scss";
 
 class Evo extends React.Component {
@@ -6,7 +7,11 @@ class Evo extends React.Component {
     super(props);
   }
   render(): any {
-    return <div>Evo</div>;
+    return (
+      <div>
+        <Score />
+      </div>
+    );
   }
 }
 export default Evo;

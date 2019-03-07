@@ -1,0 +1,17 @@
+.five-star {
+  i {
+    display: inline-block;
+    width: px2rem(12px);
+    height: px2rem(12px);
+    background-size: cover;
+    &.golden {
+      background-image: url(./images/fullstar.png);
+    }
+    &.half {
+      background-image: url(./images/halfstar.png);
+    }
+    &.gray {
+      background-image: url(./images/gray-star.png);
+    }
+  }
+}

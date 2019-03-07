@@ -1,4 +1,11 @@
 /**
+ * 评价打分
+ */
+interface IScore {
+  scoring: any;
+}
+
+/**
  * @description 购物车
  */
 interface IShopBar {
@@ -27,6 +34,7 @@ interface IState {
   tabBarReducer: ITabBar;
   menuReducer: IMenu;
   shopBarReducer: IShopBar;
+  scoreReducer: IScore;
 }
 
 /**
@@ -37,5 +45,5 @@ interface IActionType {
   payload: any;
 }
 
-export { IActionType, ITabBar, IMenu, IShopBar };
+export { IActionType, ITabBar, IMenu, IShopBar, IScore };
 export default IState;

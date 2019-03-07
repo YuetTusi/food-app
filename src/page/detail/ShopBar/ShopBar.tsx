@@ -13,6 +13,8 @@ interface IProps extends IShopBar {
   addFoodCount: Function;
   //减少购物车外卖数量
   minusFoodCount: Function;
+  //清空购物车
+  resetFoodCount: Function;
 }
 
 class ShopBar extends React.Component<IProps> {
@@ -31,6 +33,13 @@ class ShopBar extends React.Component<IProps> {
     this.props.minusFoodCount(id);
     let isEmpty: boolean = this.isEmptyCart();
     this.props.toggleCartList(!isEmpty);
+  }
+  /**
+   * 清空购物车
+   */
+  clearCartClick() {
+    this.props.resetFoodCount();
+    this.props.toggleCartList(false);
   }
   /**
    * @description 购物车是否为空
@@ -58,7 +67,10 @@ class ShopBar extends React.Component<IProps> {
    * @description 隐藏&显示购物车列表
    */
   toggleCartListClick() {
-    this.props.toggleCartList(!this.props.showCartList);
+    if (!this.isEmptyCart()) {
+      //购物车里有内容才可切换
+      this.props.toggleCartList(!this.props.showCartList);
+    }
   }
   /**
    * @description 计算总价及数量
@@ -119,7 +131,7 @@ class ShopBar extends React.Component<IProps> {
           className="cart-list"
           style={{ display: this.props.showCartList ? "block" : "none" }}
         >
-          <div className="title">
+          <div className="title" onClick={() => this.clearCartClick()}>
             <i />
             <span>清空购物车</span>
           </div>

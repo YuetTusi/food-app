@@ -1,0 +1,55 @@
+.score {
+  background-color: rgb(244, 244, 244);
+  padding: px2rem(10px) 0;
+  .scoring-panel {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: px2rem(16px);
+    padding: px2rem(10px) 0;
+    border-top: 1px solid rgb(199, 199, 199);
+    border-bottom: 1px solid rgb(199, 199, 199);
+    .scroing-left {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      .num {
+        color: rgb(253, 158, 0);
+        font-size: px2rem(32px);
+      }
+      .text {
+        color: rgb(79, 79, 79);
+      }
+    }
+    .scroing-center {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      span {
+        color: rgb(79, 79, 79);
+        font-size: px2rem(14px);
+      }
+      div{
+          display: flex;
+          flex-direction: row;
+      }
+      small {
+        color: rgb(253, 158, 0);
+      }
+    }
+    .scroing-right {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      .num {
+        color: rgb(253, 158, 0);
+        font-size: px2rem(32px);
+      }
+      .text {
+        color: rgb(79, 79, 79);
+      }
+    }
+  }
+}
