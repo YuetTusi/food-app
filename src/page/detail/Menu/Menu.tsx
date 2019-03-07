@@ -1,4 +1,5 @@
 import * as React from "react";
+import ShopBar from "../ShopBar/ShopBar";
 import IState, { IMenu } from "../store/types";
 import menuAction from "../store/actions/menu";
 import { connect } from "react-redux";
@@ -165,6 +166,7 @@ class Menu extends React.Component<IProps> {
             {this.renderCurrentFoodList()}
           </div>
         </div>
+        <ShopBar />
       </div>
     );
   }
