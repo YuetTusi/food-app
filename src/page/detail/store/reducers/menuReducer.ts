@@ -71,17 +71,19 @@ function minusFoodCount(state: IMenu, action: any): IMenu {
   return newState;
 }
 function resetFoodCount(state: IMenu, action: any): IMenu {
-  let newState: IMenu = { ...state };
-  let list = state.foodList[state.currentFoodIndex];
-  if (list.spus && list.spus.length > 0) {
-    list = list.spus.map((item: any) => {
-      if (item.chooseCount) {
-        item.chooseCount = 0; //将所有的chooseCount清零
+  let newState: IMenu = state;
+
+  let foodList = state.foodList || [];
+  for (let i = 0; i < foodList.length; i++) {
+    let spus = foodList[i].spus || [];
+    for (let j = 0; j < spus.length; j++) {
+      if (spus[j].chooseCount) {
+        spus[j].chooseCount = 0;
       }
-      return item;
-    });
-    newState.foodList[state.currentFoodIndex].spus = [...list];
+    }
   }
+  newState = { ...state, foodList: [...foodList] };
+
   return newState;
 }
 

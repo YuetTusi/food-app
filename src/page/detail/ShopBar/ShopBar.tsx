@@ -55,10 +55,9 @@ class ShopBar extends React.Component<IProps> {
         for (let j = 0; j < spus.length; j++) {
           if (spus[j].chooseCount && spus[j].chooseCount > 0) {
             isEmpty = false;
-            break;
+            return isEmpty;
           }
         }
-        break;
       }
     }
     return isEmpty;
