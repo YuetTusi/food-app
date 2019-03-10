@@ -4,6 +4,8 @@
 interface ICommentList {
   //分页数据，以及页码，是否有下一页等
   comments: Array<any>;
+  hasNextPage: boolean;
+  pageIndex: number;
 }
 
 /**

@@ -9,12 +9,12 @@ const DELAY: number = 100;
 function dropdownLoad(event: any, callback: any): void {
   let { clientHeight, scrollHeight, scrollTop } = document.documentElement;
   // let blank: number = 30; //提前量
-  // console.log(scrollTop + clientHeight - (scrollHeight - blank));
-  if (scrollTop + clientHeight >= scrollHeight) {
-    if (typeof callback === "function") {
-      callback.call(event);
-    }
-  }
+  console.log(scrollTop + clientHeight, scrollHeight);
+  // if (scrollTop + clientHeight >= scrollHeight) {
+  //   if (typeof callback === "function") {
+  //     callback.call(event);
+  //   }
+  // }
 }
 
 export { dropdownLoad };
