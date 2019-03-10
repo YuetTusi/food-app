@@ -1,0 +1,52 @@
+.restaurant {
+  font-size: px2rem(16px);
+  .section {
+    border-top: px2rem(10px) solid #efefef;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #efefef;
+        padding: px2rem(10px);
+        i {
+          display: block;
+          width: px2rem(16px);
+          height: px2rem(16px);
+          background-size: cover;
+          &.tel {
+            background-image: url(./images/tel.png);
+          }
+          &.address {
+            background-image: url(./images/address.png);
+          }
+          &.info {
+            background-image: url(./images/info.png);
+          }
+          &.time {
+            background-image: url(./images/time.png);
+          }
+        }
+        img {
+          display: block;
+          width: px2rem(16px);
+          height: px2rem(16px);
+        }
+        div {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          padding-left: px2rem(5px);
+          label {
+            display: inline-block;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}

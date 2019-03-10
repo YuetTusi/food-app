@@ -5,6 +5,7 @@ import { menuReducer } from "./menuReducer";
 import { shopBarReducer } from "./shopBarReducer";
 import { scoreReducer } from "./scoreReducer";
 import { commentListReducer } from "./commentList";
+import { restaurantReducer } from "./restaurantReducer";
 
 //导出汇总Reducer
 export default function(history: any) {
@@ -14,6 +15,7 @@ export default function(history: any) {
     menuReducer,
     shopBarReducer,
     scoreReducer,
-    commentListReducer
+    commentListReducer,
+    restaurantReducer
   });
 }

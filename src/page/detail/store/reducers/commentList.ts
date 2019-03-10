@@ -36,11 +36,6 @@ function mergeState(state: ICommentList, action: IActionType): ICommentList {
       hasNextPage: action.payload.poi_has_next_page,
       pageIndex: action.payload.page_index
     };
-    // if (action.payload.page_index == 4) {
-    //   console.log(action.payload);
-    // } else {
-
-    // }
   }
   return newState;
 }

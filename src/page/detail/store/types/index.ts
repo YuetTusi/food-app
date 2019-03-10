@@ -1,4 +1,18 @@
 /**
+ * @description 商家数据
+ */
+interface IRestaurant {
+  //电话
+  callCenter: string;
+  //地址
+  address: string;
+  //时间
+  shippingTime: string;
+  //配送服务
+  discounts: Array<any>;
+}
+
+/**
  * @description 外卖评价数据
  */
 interface ICommentList {
@@ -46,6 +60,7 @@ interface IState {
   shopBarReducer: IShopBar;
   scoreReducer: IScore;
   commentListReducer: ICommentList;
+  restaurantReducer: IRestaurant;
 }
 
 /**
@@ -56,5 +71,13 @@ interface IActionType {
   payload: any;
 }
 
-export { IActionType, ITabBar, IMenu, IShopBar, IScore, ICommentList };
+export {
+  IActionType,
+  ITabBar,
+  IMenu,
+  IShopBar,
+  IScore,
+  ICommentList,
+  IRestaurant
+};
 export default IState;
