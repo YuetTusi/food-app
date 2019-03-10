@@ -1,0 +1,78 @@
+.comment-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e6e6e6;
+  padding: px2rem(10px) 0;
+  .avatar {
+    img {
+      width: px2rem(48px);
+      height: px2rem(48px);
+      border-radius: 50%;
+      margin: px2rem(15px);
+    }
+  }
+  .detail {
+    display: flex;
+    flex: 1; /*撑滿空间*/
+    flex-direction: column;
+    font-size: px2rem(14px);
+    > div {
+      padding: px2rem(2px) 0;
+    }
+    .name-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .name {
+        font-size: px2rem(16px);
+      }
+      .comment-time {
+        font-size: px2rem(12px);
+        color: #b0b0b0;
+        margin-right: px2rem(5px);
+      }
+    }
+    .ship-time {
+      display: flex;
+      flex-direction: row;
+      font-size: px2rem(12px);
+      color: #b0b0b0;
+    }
+    .pics-ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      li {
+        margin: 0;
+        padding: px2rem(5px) px2rem(5px) px2rem(5px) 0;
+        list-style-type: none;
+        img {
+          width: px2rem(64px);
+          height: px2rem(64px);
+        }
+      }
+    }
+    .comment {
+      font-size: px2rem(14px);
+    }
+    .labels-ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      li {
+        display: block;
+        margin-right: px2rem(2px);
+        list-style-type: none;
+        em {
+          font-size: px2rem(12px);
+          font-style: normal;
+          color: rgb(82, 100, 142);
+        }
+      }
+    }
+  }
+}

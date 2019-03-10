@@ -1,4 +1,12 @@
 /**
+ * @description 外卖评价数据
+ */
+interface ICommentList {
+  //分页数据，以及页码，是否有下一页等
+  comments: Array<any>;
+}
+
+/**
  * 评价打分
  */
 interface IScore {
@@ -35,6 +43,7 @@ interface IState {
   menuReducer: IMenu;
   shopBarReducer: IShopBar;
   scoreReducer: IScore;
+  commentListReducer: ICommentList;
 }
 
 /**
@@ -45,5 +54,5 @@ interface IActionType {
   payload: any;
 }
 
-export { IActionType, ITabBar, IMenu, IShopBar, IScore };
+export { IActionType, ITabBar, IMenu, IShopBar, IScore, ICommentList };
 export default IState;

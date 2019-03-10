@@ -4,6 +4,7 @@ import { tabBarReducer } from "./tabBarReducer";
 import { menuReducer } from "./menuReducer";
 import { shopBarReducer } from "./shopBarReducer";
 import { scoreReducer } from "./scoreReducer";
+import { commentListReducer } from "./commentList";
 
 //导出汇总Reducer
 export default function(history: any) {
@@ -12,6 +13,7 @@ export default function(history: any) {
     tabBarReducer,
     menuReducer,
     shopBarReducer,
-    scoreReducer
+    scoreReducer,
+    commentListReducer
   });
 }
